@@ -32,14 +32,9 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        #header h2 {
+        #header h1 {
             margin: 0;
             font-size: 2.5em;
-        }
-
-        #header p {
-            margin: 10px 0;
-            font-size: 1.2em;
         }
 
         /* Navigation Menu */
@@ -72,7 +67,7 @@
             color: #ddd;
         }
 
-        /* Main Article Styles */
+        /* Main Content Styles */
         #main {
             background-color: #fff;
             margin: 20px auto;
@@ -82,12 +77,17 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        header h2 {
-            margin-top: 0;
+        section {
+            margin-bottom: 20px;
         }
 
         section h3 {
             margin-top: 0;
+            font-size: 1.8em;
+        }
+
+        section p {
+            margin-bottom: 15px;
         }
 
         /* Footer Styles */
@@ -99,15 +99,8 @@
             margin-top: 20px;
         }
 
-        #footer .icons a {
-            color: #fff;
-            margin: 0 15px;
-            font-size: 1.5em;
-            transition: color 0.3s;
-        }
-
-        #footer .icons a:hover {
-            color: #ddd;
+        #footer p {
+            margin: 0;
         }
 
         /* Button Styles */
@@ -146,8 +139,7 @@
 
         <!-- Header -->
         <header id="header" data-aos="fade-down">
-            <h2>일산장신들 - 코드릭스 프로젝트</h2>
-            <p>로그인하신 것을 환영합니다!</p>
+            <h1>일산장신들 - 코드릭스 프로젝트</h1>
         </header>
 
         <!-- Navigation -->
@@ -163,47 +155,46 @@
 
         <!-- Main -->
         <article id="main">
-            <header>
-                <h2 data-aos="fade-right">일산장신들 - 코드릭스 프로젝트</h2>
-                <p data-aos="fade-left">주엽고등학교 코딩 동아리 코드릭스에서 시작된 일산장신들 프로젝트입니다.</p>
-            </header>
-            <section class="wrapper style5" data-aos="fade-up">
-                <div class="inner">
-                    <h3>코딩 동아리 코드릭스</h3>
-                    <p>
-                        일산장신들은 주엽고등학교 코딩 동아리 코드릭스에서 시작된 프로젝트입니다. 
-                        이 프로젝트는 다양한 SNS 플랫폼을 개발하여 학생들의 커뮤니케이션과 협업을 증진하는 것을 목표로 합니다.
-                    </p>
+            <!-- Introduction Section -->
+            <section data-aos="fade-right">
+                <h3>일산장신들 - 코드릭스 프로젝트</h3>
+                <p>주엽고등학교 코딩 동아리 코드릭스에서 시작된 일산장신들 프로젝트입니다.</p>
+            </section>
 
-                    <h4>프로젝트 정보</h4>
-                    <ul>
-                        <li>팀명: 코드릭스</li>
-                        <li>프로젝트명: 일산장신들</li>
-                        <li>목적: SNS 개발</li>
-                        <li>소속 학교: 주엽고등학교</li>
-                        <li>프로젝트 탄생일: 2024년 3월</li>
-                    </ul>
+            <!-- About Us Section -->
+            <section data-aos="fade-up">
+                <h3>코딩 동아리 코드릭스</h3>
+                <p>
+                    일산장신들은 주엽고등학교 코딩 동아리 코드릭스에서 시작된 프로젝트입니다. 
+                    이 프로젝트는 다양한 SNS 플랫폼을 개발하여 학생들의 커뮤니케이션과 협업을 증진하는 것을 목표로 합니다.
+                </p>
+            </section>
 
-                    <h4>우리 팀의 목표</h4>
-                    <p>
-                        우리 팀은 학생들이 자유롭게 소통하고, 협력하여 새로운 아이디어를 실현할 수 있는 
-                        SNS 플랫폼을 만들기 위해 노력하고 있습니다. 여러분의 참여와 관심이 필요합니다!
-                    </p>
-                </div>
+            <!-- Project Information Section -->
+            <section data-aos="fade-up">
+                <h3>프로젝트 정보</h3>
+                <ul>
+                    <li>팀명: 코드릭스</li>
+                    <li>프로젝트명: 일산장신들</li>
+                    <li>목적: SNS 개발</li>
+                    <li>소속 학교: 주엽고등학교</li>
+                    <li>프로젝트 탄생일: 2024년 3월</li>
+                </ul>
+            </section>
+
+            <!-- Team Goals Section -->
+            <section data-aos="fade-up">
+                <h3>우리 팀의 목표</h3>
+                <p>
+                    우리 팀은 학생들이 자유롭게 소통하고, 협력하여 새로운 아이디어를 실현할 수 있는 
+                    SNS 플랫폼을 만들기 위해 노력하고 있습니다. 여러분의 참여와 관심이 필요합니다!
+                </p>
             </section>
         </article>
 
         <!-- Footer -->
         <footer id="footer" data-aos="fade-up">
-            <ul class="icons">
-                <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-                <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-                <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-                <li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-            </ul>
-            <ul class="copyright">
-                <li>&copy; 코드릭스</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-            </ul>
+            <p>&copy; 코드릭스</p>
         </footer>
 
     </div>
