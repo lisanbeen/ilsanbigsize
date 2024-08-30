@@ -1,13 +1,120 @@
 <!DOCTYPE HTML>
 <!--
-    made by leeseongbeen
+    Made by leeseongbeen
 -->
 <html>
 <head>
     <title>일산장신들 - 코드릭스</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+    <!-- AOS Library for animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- Main CSS -->
     <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        h2, h3, h4 {
+            font-weight: 400;
+        }
+
+        /* Header Styles */
+        #header {
+            background-color: #0077b6;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 2px -2px gray;
+        }
+
+        #header h2 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        #header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+
+        /* Navigation Menu */
+        #nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        #nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* Main Article Styles */
+        #main {
+            background-color: #fff;
+            margin: 20px auto;
+            padding: 30px;
+            max-width: 800px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Footer Styles */
+        #footer {
+            background-color: #0077b6;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #footer .icons a {
+            color: #fff;
+            margin: 0 10px;
+            font-size: 1.5em;
+        }
+
+        /* Button Styles */
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px 0;
+            border-radius: 5px;
+            background-color: #0077b6;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .button:hover {
+            background-color: #005f8a;
+        }
+
+        /* Animation Styles */
+        [data-aos] {
+            opacity: 0;
+            transition-property: transform, opacity;
+        }
+
+        [data-aos].aos-animate {
+            opacity: 1;
+        }
+    </style>
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 </head>
 <body class="is-preload">
@@ -16,21 +123,16 @@
     <div id="page-wrapper">
 
         <!-- Header -->
-        <header id="header">
+        <header id="header" data-aos="fade-down">
+            <h2>일산장신들 - 코드릭스 프로젝트</h2>
+            <p>로그인하신 것을 환영합니다!</p>
             <nav id="nav">
                 <ul>
-                    <li class="special">
-                        <a href="index.html" class="menuToggle"><span>로그아웃</span></a>
-                        <div id="menu">
-                            <ul>
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="projects.html">Projects</a></li>
-                                <li><a href="#">Sign Up</a></li>
-                                <li><a href="#">Log In</a></li>
-                            </ul>
-                        </div>
-                    </li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="#">Sign Up</a></li>
+                    <li><a href="#">Log In</a></li>
                 </ul>
             </nav>
         </header>
@@ -38,10 +140,10 @@
         <!-- Main -->
         <article id="main">
             <header>
-                <h2>일산장신들 - 코드릭스 프로젝트</h2>
-                <p>로그인하신 것을 환영합니다!</p>
+                <h2 data-aos="fade-right">일산장신들 - 코드릭스 프로젝트</h2>
+                <p data-aos="fade-left">주엽고등학교 코딩 동아리 코드릭스에서 시작된 일산장신들 프로젝트입니다.</p>
             </header>
-            <section class="wrapper style5">
+            <section class="wrapper style5" data-aos="fade-up">
                 <div class="inner">
                     <h3>코딩 동아리 코드릭스</h3>
                     <p>
@@ -68,7 +170,7 @@
         </article>
 
         <!-- Footer -->
-        <footer id="footer">
+        <footer id="footer" data-aos="fade-up">
             <ul class="icons">
                 <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
                 <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
@@ -90,6 +192,16 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+    <!-- AOS Script for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000, // Duration of animation in milliseconds
+            easing: 'ease-in-out', // Easing function for the animation
+            once: true // Whether animation should happen only once - while scrolling down
+        });
+    </script>
 
 </body>
 </html>
