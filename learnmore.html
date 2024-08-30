@@ -18,14 +18,14 @@
             font-family: 'Roboto', sans-serif;
             line-height: 1.6;
             color: #333;
-            background-color: #f0f0f0;
+            background-color: #e0e0e0;
             margin: 0;
             padding: 0;
         }
 
         /* Header Styles */
         #header {
-            background-color: #333;
+            background-color: #444;
             color: #fff;
             padding: 20px 0;
             text-align: center;
@@ -34,14 +34,26 @@
 
         #header h2 {
             margin: 0;
-            font-size: 2em;
+            font-size: 2.5em;
+        }
+
+        #header p {
+            margin: 10px 0;
+            font-size: 1.2em;
         }
 
         /* Navigation Menu */
+        #nav {
+            background-color: #555;
+            color: #fff;
+            padding: 10px 0;
+        }
+
         #nav ul {
             list-style-type: none;
             padding: 0;
             margin: 0;
+            text-align: center;
         }
 
         #nav ul li {
@@ -70,9 +82,17 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
+        header h2 {
+            margin-top: 0;
+        }
+
+        section h3 {
+            margin-top: 0;
+        }
+
         /* Footer Styles */
         #footer {
-            background-color: #333;
+            background-color: #444;
             color: #fff;
             padding: 20px 0;
             text-align: center;
@@ -127,16 +147,19 @@
         <!-- Header -->
         <header id="header" data-aos="fade-down">
             <h2>일산장신들 - 코드릭스 프로젝트</h2>
-            <nav id="nav">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="#">Sign Up</a></li>
-                    <li><a href="#">Log In</a></li>
-                </ul>
-            </nav>
+            <p>로그인하신 것을 환영합니다!</p>
         </header>
+
+        <!-- Navigation -->
+        <nav id="nav" data-aos="fade-up">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="#">Sign Up</a></li>
+                <li><a href="#">Log In</a></li>
+            </ul>
+        </nav>
 
         <!-- Main -->
         <article id="main">
