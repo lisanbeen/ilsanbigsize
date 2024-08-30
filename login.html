@@ -125,7 +125,7 @@
 
             if (username === storedUsername && password === storedPassword) {
                 alert('로그인 성공!');
-                <a href="guest.html">About Us</a>
+                window.location.href = 'guest.html'; // 로그인 성공 시 페이지 이동
             } else {
                 document.getElementById('login-error-message').style.display = 'block';
             }
