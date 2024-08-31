@@ -1,134 +1,177 @@
-<!DOCTYPE HTML>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <title>MySNS</title>
-    <link rel="stylesheet" href="assets/css/guest.css"> <!-- 심플 모던 스타일의 CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- 아이콘 사용 -->
+    <title>User Interaction Page</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        /* 공통 스타일링 */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+        }
+        .photo-container, .story-container, .memo-container, .post-container {
+            margin-top: 30px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+        }
+        .message {
+            text-align: center;
+            margin-top: 10px;
+            color: red;
+        }
+        .story {
+            display: inline-block;
+            width: 100px;
+            height: 150px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            overflow: hidden;
+        }
+        .story img {
+            width: 100%;
+            height: auto;
+        }
+        .memo, .post {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .author {
+            font-weight: bold;
+        }
+    </style>
 </head>
-<body class="is-preload">
+<body>
 
-    <!-- Header -->
-    <div id="header">
-        <div class="top">
-            <!-- Logo -->
-            <div id="logo">
-                <span class="image avatar48"><img src="images/avatar.jpg" alt="Avatar" /></span>
-                <h1 id="title">MySNS</h1>
-                <p>Connect with friends and the world around you</p>
-            </div>
-
-            <!-- Nav -->
-            <nav id="nav">
-                <ul>
-                    <li><a href="#home" id="home-link"><span class="icon solid fa-home">Home</span></a></li>
-                    <li><a href="#stories" id="stories-link"><span class="icon solid fa-images">Stories</span></a></li>
-                    <li><a href="#posts" id="posts-link"><span class="icon solid fa-pencil-alt">Posts</span></a></li>
-                    <li><a href="#profile" id="profile-link"><span class="icon solid fa-user">Profile</span></a></li>
-                </ul>
-            </nav>
-        </div>
+<div class="container">
+    <!-- 사진 업로드 및 미리보기 -->
+    <div class="photo-container">
+        <h2>사진 업로드</h2>
+        <input type="file" id="photo-input" accept="image/*">
+        <div id="photo-preview"></div>
     </div>
 
-    <!-- Main -->
-    <div id="main">
-        <!-- Home Section -->
-        <section id="home" class="one dark cover">
-            <div class="container">
-                <header>
-                    <h2>Welcome to <strong>MySNS</strong></h2>
-                    <p>Share your thoughts, photos, and connect with others.</p>
-                </header>
-                <footer>
-                    <a href="#stories" class="button scrolly">View Stories</a>
-                </footer>
-            </div>
-        </section>
-
-        <!-- Stories Section -->
-        <section id="stories" class="two">
-            <div class="container">
-                <header>
-                    <h2>Stories</h2>
-                </header>
-                <div class="stories-grid">
-                    <!-- Example Story -->
-                    <div class="story-item">
-                        <img src="images/story1.jpg" alt="Story Image">
-                        <p>Story by <strong>John Doe</strong></p>
-                    </div>
-                    <div class="story-item">
-                        <img src="images/story2.jpg" alt="Story Image">
-                        <p>Story by <strong>Jane Smith</strong></p>
-                    </div>
-                    <!-- Add more stories as needed -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Posts Section -->
-        <section id="posts" class="three">
-            <div class="container">
-                <header>
-                    <h2>Posts</h2>
-                </header>
-                <div class="post-form">
-                    <form method="post" action="#">
-                        <textarea name="post" placeholder="What's on your mind?"></textarea>
-                        <input type="submit" value="Post" />
-                    </form>
-                </div>
-                <div class="posts-list">
-                    <!-- Example Post -->
-                    <article class="post-item">
-                        <img src="images/avatar.jpg" alt="User Avatar" class="avatar">
-                        <div class="post-content">
-                            <h3>John Doe</h3>
-                            <p>This is an example post. It's simple and clean.</p>
-                        </div>
-                    </article>
-                    <article class="post-item">
-                        <img src="images/avatar2.jpg" alt="User Avatar" class="avatar">
-                        <div class="post-content">
-                            <h3>Jane Smith</h3>
-                            <p>Another example post. Share your thoughts!</p>
-                        </div>
-                    </article>
-                    <!-- Add more posts as needed -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Profile Section -->
-        <section id="profile" class="four">
-            <div class="container">
-                <header>
-                    <h2>Your Profile</h2>
-                </header>
-                <div class="profile-info">
-                    <img src="images/avatar.jpg" alt="Profile Picture" class="profile-pic">
-                    <h3>Jane Doe</h3>
-                    <p>Hyperspace Engineer. Lover of coffee and technology.</p>
-                </div>
-            </div>
-        </section>
+    <!-- 스토리 보기 -->
+    <div class="story-container">
+        <h2>스토리 보기</h2>
+        <div id="story-display"></div>
     </div>
 
-    <!-- Footer -->
-    <div id="footer">
-        <ul class="icons">
-            <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-            <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-            <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-        </ul>
-        <ul class="copyright">
-            <li>&copy; MySNS. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-        </ul>
+    <!-- 메모 작성 -->
+    <div class="memo-container">
+        <h2>메모 작성</h2>
+        <textarea id="memo-input" rows="4" cols="50" placeholder="메모를 입력하세요"></textarea>
+        <button id="save-memo">메모 저장</button>
+        <div id="memo-display" class="memo"></div>
     </div>
 
-    <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/main.js"></script>
+    <!-- 게시물 작성 -->
+    <div class="post-container">
+        <h2>게시물 작성</h2>
+        <textarea id="post-input" rows="4" cols="50" placeholder="게시물 내용을 입력하세요"></textarea>
+        <button id="save-post">게시물 저장</button>
+        <div id="post-display" class="post"></div>
+    </div>
+</div>
+
+<script>
+    // 로그인된 사용자 이름 가져오기 (예: 로컬 스토리지에서)
+    const userName = localStorage.getItem('userName') || '사용자';
+
+    // 사진 업로드 기능
+    const photoInput = document.getElementById('photo-input');
+    const photoPreview = document.getElementById('photo-preview');
+
+    photoInput.addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                img.style.width = '100%';
+                photoPreview.innerHTML = '';
+                photoPreview.appendChild(img);
+                // 업로드된 이미지를 로컬스토리지에 저장
+                localStorage.setItem('uploadedPhoto', e.target.result);
+                updateStoryDisplay(e.target.result);
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // 스토리 보기 기능
+    function updateStoryDisplay(imageSrc) {
+        const storyDisplay = document.getElementById('story-display');
+        const storyDiv = document.createElement('div');
+        storyDiv.classList.add('story');
+        const img = document.createElement('img');
+        img.src = imageSrc;
+        storyDiv.appendChild(img);
+        storyDisplay.appendChild(storyDiv);
+    }
+
+    // 로컬스토리지에 저장된 이미지 표시
+    const storedImage = localStorage.getItem('uploadedPhoto');
+    if (storedImage) {
+        updateStoryDisplay(storedImage);
+    }
+
+    // 메모 작성 기능
+    document.getElementById('save-memo').addEventListener('click', function() {
+        const memoText = document.getElementById('memo-input').value;
+        localStorage.setItem('memo', memoText);
+        displayMemo();
+    });
+
+    function displayMemo() {
+        const memoDisplay = document.getElementById('memo-display');
+        const memoText = localStorage.getItem('memo');
+        if (memoText) {
+            memoDisplay.innerHTML = `<p><span class="author">${userName}:</span> ${memoText}</p>`;
+        }
+    }
+
+    // 초기 로드 시 메모 표시
+    displayMemo();
+
+    // 게시물 작성 기능
+    document.getElementById('save-post').addEventListener('click', function() {
+        const postText = document.getElementById('post-input').value;
+        localStorage.setItem('post', postText);
+        displayPost();
+    });
+
+    function displayPost() {
+        const postDisplay = document.getElementById('post-display');
+        const postText = localStorage.getItem('post');
+        if (postText) {
+            postDisplay.innerHTML = `<p><span class="author">${userName}:</span> ${postText}</p>`;
+        }
+    }
+
+    // 초기 로드 시 게시물 표시
+    displayPost();
+
+</script>
+
 </body>
 </html>
