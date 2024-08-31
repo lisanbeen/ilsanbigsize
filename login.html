@@ -93,7 +93,7 @@
 
                     <!-- 로그인 및 회원가입 폼 -->
                     <div class="user-form" id="user-form" style="display: none;">
-                        <input type="text" id="user-id-name" placeholder="학번과 이름 (예: 10101-캬리나)" />
+                        <input type="text" id="user-id-name" placeholder="학번과 이름 (예: 10101-지피티)" />
                         <input type="password" id="user-password" placeholder="비밀번호 입력" />
                         <button class="button primary" id="submit-signup-login">로그인 / 회원가입</button>
                         <p class="message" id="form-message" style="color: red; display: none;"></p>
@@ -131,8 +131,13 @@
     <script>
         // 페이지 로드 시 배너 표시 여부 확인
         document.addEventListener('DOMContentLoaded', function() {
-            if (!localStorage.getItem('bannerClosed')) {
+            // 로컬 스토리지에서 배너 상태 확인
+            const bannerClosed = localStorage.getItem('bannerClosed');
+            
+            if (!bannerClosed) {
                 document.getElementById('signup-banner').style.display = 'block'; // 배너 표시
+            } else {
+                console.log('배너가 닫혔거나 이미 표시되지 않았습니다.');
             }
         });
 
