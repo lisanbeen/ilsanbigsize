@@ -1,178 +1,78 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>User Interaction Page</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <style>
-        /* 공통 스타일링 */
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        h2 {
-            text-align: center;
-        }
-        .photo-container, .story-container, .memo-container, .post-container {
-            margin-top: 30px;
-        }
-        input, textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            box-sizing: border-box;
-        }
-        button {
-            width: 100%;
-            padding: 10px;
-        }
-        .message {
-            text-align: center;
-            margin-top: 10px;
-            color: red;
-        }
-        .story {
-            display: inline-block;
-            width: 100px;
-            height: 150px;
-            margin-right: 10px;
-            border: 1px solid #ccc;
-            overflow: hidden;
-        }
-        .story img {
-            width: 100%;
-            height: auto;
-        }
-        .memo, .post {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-top: 20px;
-        }
-        .author {
-            font-weight: bold;
-        }
-    </style>
-</head>
-<body>
+// 로그인된 사용자 학번과 이름 가져오기 (예: 로컬 스토리지에서)
+const currentUserId = localStorage.getItem('currentUserId') || 'unknownId';
+const currentUserName = localStorage.getItem('currentUserName') || '사용자';
 
-<div class="container">
-    <!-- 사진 업로드 및 미리보기 -->
-    <div class="photo-container">
-        <h2>사진 업로드</h2>
-        <input type="file" id="photo-input" accept="image/*">
-        <div id="photo-preview"></div>
-    </div>
+// 사진 업로드 기능
+const photoInput = document.getElementById('photo-input');
+const photoPreview = document.getElementById('photo-preview');
 
-    <!-- 스토리 보기 -->
-    <div class="story-container">
-        <h2>스토리 보기</h2>
-        <div id="story-display"></div>
-    </div>
-
-    <!-- 메모 작성 -->
-    <div class="memo-container">
-        <h2>메모 작성</h2>
-        <textarea id="memo-input" rows="4" cols="50" placeholder="메모를 입력하세요"></textarea>
-        <button id="save-memo">메모 저장</button>
-        <div id="memo-display" class="memo"></div>
-    </div>
-
-    <!-- 게시물 작성 -->
-    <div class="post-container">
-        <h2>게시물 작성</h2>
-        <textarea id="post-input" rows="4" cols="50" placeholder="게시물 내용을 입력하세요"></textarea>
-        <button id="save-post">게시물 저장</button>
-        <div id="post-display" class="post"></div>
-    </div>
-</div>
-
-<script>
-    // 로그인된 사용자 학번과 이름 가져오기 (예: 로컬 스토리지에서)
-    const currentUserId = localStorage.getItem('currentUserId') || 'unknownId';
-    const currentUserName = localStorage.getItem('currentUserName') || '사용자';
-
-    // 사진 업로드 기능
-    const photoInput = document.getElementById('photo-input');
-    const photoPreview = document.getElementById('photo-preview');
-
-    photoInput.addEventListener('change', function(event) {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const img = document.createElement('img');
-                img.src = e.target.result;
-                img.style.width = '100%';
-                photoPreview.innerHTML = '';
-                photoPreview.appendChild(img);
-                // 학번을 키로 사용하여 업로드된 이미지를 로컬스토리지에 저장
-                localStorage.setItem(`uploadedPhoto_${currentUserId}`, e.target.result);
-                updateStoryDisplay(e.target.result);
-            };
-            reader.readAsDataURL(file);
-        }
-    });
-
-    // 스토리 보기 기능
-    function updateStoryDisplay(imageSrc) {
-        const storyDisplay = document.getElementById('story-display');
-        const storyDiv = document.createElement('div');
-        storyDiv.classList.add('story');
-        const img = document.createElement('img');
-        img.src = imageSrc;
-        storyDiv.appendChild(img);
-        storyDisplay.appendChild(storyDiv);
+photoInput.addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const img = document.createElement('img');
+            img.src = e.target.result;
+            img.style.width = '100%';
+            photoPreview.innerHTML = '';
+            photoPreview.appendChild(img);
+            // 학번을 키로 사용하여 업로드된 이미지를 로컬스토리지에 저장
+            localStorage.setItem(`uploadedPhoto_${currentUserId}`, e.target.result);
+            updateStoryDisplay(e.target.result);
+        };
+        reader.readAsDataURL(file);
     }
+});
 
-    // 로컬스토리지에 저장된 이미지 표시
-    const storedImage = localStorage.getItem(`uploadedPhoto_${currentUserId}`);
-    if (storedImage) {
-        updateStoryDisplay(storedImage);
-    }
+// 스토리 보기 기능
+function updateStoryDisplay(imageSrc) {
+    const storyDisplay = document.getElementById('story-display');
+    const storyDiv = document.createElement('div');
+    storyDiv.classList.add('story');
+    const img = document.createElement('img');
+    img.src = imageSrc;
+    storyDiv.appendChild(img);
+    storyDisplay.appendChild(storyDiv);
+}
 
-    // 메모 작성 기능
-    document.getElementById('save-memo').addEventListener('click', function() {
-        const memoText = document.getElementById('memo-input').value;
-        localStorage.setItem(`memo_${currentUserId}`, memoText);
-        displayMemo();
-    });
+// 로컬스토리지에 저장된 이미지 표시
+const storedImage = localStorage.getItem(`uploadedPhoto_${currentUserId}`);
+if (storedImage) {
+    updateStoryDisplay(storedImage);
+}
 
-    function displayMemo() {
-        const memoDisplay = document.getElementById('memo-display');
-        const memoText = localStorage.getItem(`memo_${currentUserId}`);
-        if (memoText) {
-            memoDisplay.innerHTML = `<p><span class="author">${currentUserName}:</span> ${memoText}</p>`;
-        }
-    }
-
-    // 초기 로드 시 메모 표시
+// 메모 작성 기능
+document.getElementById('save-memo').addEventListener('click', function() {
+    const memoText = document.getElementById('memo-input').value;
+    localStorage.setItem(`memo_${currentUserId}`, memoText);
     displayMemo();
+});
 
-    // 게시물 작성 기능
-    document.getElementById('save-post').addEventListener('click', function() {
-        const postText = document.getElementById('post-input').value;
-        localStorage.setItem(`post_${currentUserId}`, postText);
-        displayPost();
-    });
-
-    function displayPost() {
-        const postDisplay = document.getElementById('post-display');
-        const postText = localStorage.getItem(`post_${currentUserId}`);
-        if (postText) {
-            postDisplay.innerHTML = `<p><span class="author">${currentUserName}:</span> ${postText}</p>`;
-        }
+function displayMemo() {
+    const memoDisplay = document.getElementById('memo-display');
+    const memoText = localStorage.getItem(`memo_${currentUserId}`);
+    if (memoText) {
+        memoDisplay.innerHTML = `<p><span class="author">${currentUserName}:</span> ${memoText}</p>`;
     }
+}
 
-    // 초기 로드 시 게시물 표시
+// 초기 로드 시 메모 표시
+displayMemo();
+
+// 게시물 작성 기능
+document.getElementById('save-post').addEventListener('click', function() {
+    const postText = document.getElementById('post-input').value;
+    localStorage.setItem(`post_${currentUserId}`, postText);
     displayPost();
+});
 
-</script>
+function displayPost() {
+    const postDisplay = document.getElementById('post-display');
+    const postText = localStorage.getItem(`post_${currentUserId}`);
+    if (postText) {
+        postDisplay.innerHTML = `<p><span class="author">${currentUserName}:</span> ${postText}</p>`;
+    }
+}
 
-</body>
-</html>
+// 초기 로드 시 게시물 표시
+displayPost();
