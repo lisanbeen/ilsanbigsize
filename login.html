@@ -43,6 +43,9 @@
             color: #333;
             border-radius: 5px;
         }
+        .terms {
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body class="is-preload">
@@ -72,6 +75,10 @@
                     <div class="user-form" id="user-form" style="display: none;">
                         <input type="text" id="user-id-name" placeholder="학번과 이름 (예: 10101-지피티)" />
                         <input type="password" id="user-password" placeholder="비밀번호 입력" />
+                        <div class="terms">
+                            <input type="checkbox" id="terms-checkbox" />
+                            <label for="terms-checkbox">회원가입 유의 사항을 읽었으며 동의합니다.</label>
+                        </div>
                         <button class="button primary" id="submit-signup-login">로그인 / 회원가입</button>
                         <p class="message" id="form-message" style="color: red; display: none;"></p>
                     </div>
@@ -124,6 +131,13 @@
         document.getElementById('submit-signup-login').addEventListener('click', function() {
             const input = document.getElementById('user-id-name').value;
             const password = document.getElementById('user-password').value;
+            const termsCheckbox = document.getElementById('terms-checkbox').checked;
+
+            if (!termsCheckbox) {
+                document.getElementById('form-message').innerText = '회원가입 유의 사항에 동의해야 합니다.';
+                document.getElementById('form-message').style.display = 'block';
+                return;
+            }
 
             // 학번과 이름 추출
             const inputParts = input.split('-');
