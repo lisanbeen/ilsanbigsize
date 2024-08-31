@@ -93,8 +93,9 @@
 </div>
 
 <script>
-    // 로그인된 사용자 이름 가져오기 (예: 로컬 스토리지에서)
-    const userName = localStorage.getItem('userName') || '사용자';
+    // 로그인된 사용자 학번과 이름 가져오기 (예: 로컬 스토리지에서)
+    const currentUserId = localStorage.getItem('currentUserId') || 'unknownId';
+    const currentUserName = localStorage.getItem('currentUserName') || '사용자';
 
     // 사진 업로드 기능
     const photoInput = document.getElementById('photo-input');
@@ -110,8 +111,8 @@
                 img.style.width = '100%';
                 photoPreview.innerHTML = '';
                 photoPreview.appendChild(img);
-                // 업로드된 이미지를 로컬스토리지에 저장
-                localStorage.setItem('uploadedPhoto', e.target.result);
+                // 학번을 키로 사용하여 업로드된 이미지를 로컬스토리지에 저장
+                localStorage.setItem(`uploadedPhoto_${currentUserId}`, e.target.result);
                 updateStoryDisplay(e.target.result);
             };
             reader.readAsDataURL(file);
@@ -130,7 +131,7 @@
     }
 
     // 로컬스토리지에 저장된 이미지 표시
-    const storedImage = localStorage.getItem('uploadedPhoto');
+    const storedImage = localStorage.getItem(`uploadedPhoto_${currentUserId}`);
     if (storedImage) {
         updateStoryDisplay(storedImage);
     }
@@ -138,15 +139,15 @@
     // 메모 작성 기능
     document.getElementById('save-memo').addEventListener('click', function() {
         const memoText = document.getElementById('memo-input').value;
-        localStorage.setItem('memo', memoText);
+        localStorage.setItem(`memo_${currentUserId}`, memoText);
         displayMemo();
     });
 
     function displayMemo() {
         const memoDisplay = document.getElementById('memo-display');
-        const memoText = localStorage.getItem('memo');
+        const memoText = localStorage.getItem(`memo_${currentUserId}`);
         if (memoText) {
-            memoDisplay.innerHTML = `<p><span class="author">${userName}:</span> ${memoText}</p>`;
+            memoDisplay.innerHTML = `<p><span class="author">${currentUserName}:</span> ${memoText}</p>`;
         }
     }
 
@@ -156,15 +157,15 @@
     // 게시물 작성 기능
     document.getElementById('save-post').addEventListener('click', function() {
         const postText = document.getElementById('post-input').value;
-        localStorage.setItem('post', postText);
+        localStorage.setItem(`post_${currentUserId}`, postText);
         displayPost();
     });
 
     function displayPost() {
         const postDisplay = document.getElementById('post-display');
-        const postText = localStorage.getItem('post');
+        const postText = localStorage.getItem(`post_${currentUserId}`);
         if (postText) {
-            postDisplay.innerHTML = `<p><span class="author">${userName}:</span> ${postText}</p>`;
+            postDisplay.innerHTML = `<p><span class="author">${currentUserName}:</span> ${postText}</p>`;
         }
     }
 
