@@ -151,11 +151,11 @@
             localStorage.setItem('bannerClosed', 'true');
         });
 
-        // 게스트 로그인 버튼 클릭 시 로그인/회원가입 폼 표시
+       // 게스트 로그인 버튼 클릭 시 로그인/회원가입 폼 표시
         document.getElementById('guest-login').addEventListener('click', function(event) {
             event.preventDefault();
             document.getElementById('user-form').style.display = 'block'; // 로그인/회원가입 폼 표시
-            document.getElementById('password-form').style.display = 'none'; // 개발자 비밀번호 폼 숨기기
+            document.getElementById('password-form').style.display = 'none'; // 개발자 비밀번호 폼 숨기기 
         });
 
         // 개발자 로그인 버튼 클릭 시 비밀번호 폼 표시
@@ -205,7 +205,7 @@
                     document.getElementById('form-message').style.display = 'block';
                 } else if (existingUserById.password === password) {
                     alert('로그인 성공!');
-                    window.location.href = 'guest.html'; // 로그인 성공 시 페이지 이동
+                    window.location.href = 'main.html'; // 로그인 성공 시 페이지 이동
                 } else {
                     document.getElementById('form-message').innerText = '아이디 또는 비밀번호가 틀렸습니다.';
                     document.getElementById('form-message').style.display = 'block';
