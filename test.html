@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="test.css">
+    <title>SNS 플랫폼</title>
+</head>
+<body>
+    <header>
+        <h1>SNS 플랫폼</h1>
+    </header>
+    <main>
+        <section id="stories">
+            <h2>스토리</h2>
+            <div id="story-container"></div>
+            <button id="add-story">스토리 추가</button>
+            <div class="file-upload hidden">
+                <input type="file" id="story-img" accept="image/*">
+                <button id="confirm-story">확인</button>
+            </div>
+        </section>
+
+        <section id="posts">
+            <h2>게시물</h2>
+            <div id="post-container"></div>
+            <button id="add-post">게시물 추가</button>
+            <div class="file-upload hidden">
+                <input type="file" id="post-img" accept="image/*">
+                <textarea id="post-text" placeholder="게시물 내용을 입력하세요"></textarea>
+                <button id="confirm-post">확인</button>
+            </div>
+        </section>
+
+        <section id="memos">
+            <h2>메모</h2>
+            <div id="memo-container"></div>
+            <button id="add-memo">메모 추가</button>
+            <div class="input-area hidden">
+                <input type="text" id="memo-text" placeholder="메모 내용을 입력하세요">
+                <button id="submit-memo">확인</button>
+            </div>
+        </section>
+
+        <section id="account" class="hidden">
+            <h2>내 계정</h2>
+            <p>사용자 정보</p>
+            <button id="back-home">홈으로 돌아가기</button>
+        </section>
+    </main>
+
+    <footer>
+        <button id="add-dropdown">추가</button>
+        <div class="dropdown hidden">
+            <button id="add-story-dropdown">스토리 추가</button>
+            <button id="add-post-dropdown">게시물 추가</button>
+            <button id="add-memo-dropdown">메모 추가</button>
+        </div>
+        <nav>
+            <button id="home-btn">홈</button>
+            <button id="account-btn">내 계정</button>
+        </nav>
+    </footer>
+
+    <script src="test.js"></script>
+</body>
+</html>
